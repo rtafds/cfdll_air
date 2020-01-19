@@ -41,15 +41,6 @@ boundaryField
     {
         type            empty;
     }
-    outlet
-    {
-        type            fixedValue;
-        value           uniform 101325;
-    }
-    inlet
-    {
-        type            zeroGradient;
-    }
     glass1
     {
         type            zeroGradient;
@@ -59,14 +50,6 @@ boundaryField
         type            zeroGradient;
     }
     sun
-    {
-        type            zeroGradient;
-    }
-    Table_master
-    {
-        type            zeroGradient;
-    }
-    Table_slave
     {
         type            zeroGradient;
     }

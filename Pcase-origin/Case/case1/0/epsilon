@@ -57,16 +57,6 @@ boundaryField
     {
         type            empty;
     }
-    outlet
-    {
-        type            zeroGradient;
-    }
-    inlet
-    {
-        type            turbulentMixingLengthDissipationRateInlet;
-        mixingLength    0.01;  // [m]
-        value           uniform 1;
-    }
     glass1
     {
         type            epsilonWallFunction;
@@ -90,24 +80,6 @@ boundaryField
         kappa           0.41;
         E               9.8;
         value           uniform 0.01;
-    }
-    Table_master
-    {
-        type            epsilonWallFunction;
-        Cmu             0.09;
-        kappa           0.41;
-        E               9.8;
-        coupleGroup     Table;
-        value           uniform 0;
-    }
-    Table_slave
-    {
-        type            epsilonWallFunction;
-        Cmu             0.09;
-        kappa           0.41;
-        E               9.8;
-        coupleGroup     Table;
-        value           uniform 0;
     }
 }
 

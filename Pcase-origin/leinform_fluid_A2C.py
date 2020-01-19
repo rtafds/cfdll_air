@@ -59,11 +59,9 @@ import random
 
 # In[2]:
 
-
 # set directory
 # 試す用
 CASE = SolutionDirectory("./Case/case0")
-
 
 # In[3]:
 
@@ -417,9 +415,7 @@ class Sample:
         
 
 
-# In[34]:
-
-
+#%%
 ## 実行環境の設定
 
 class Aircond:
@@ -429,6 +425,7 @@ class Aircond:
         self.CASE = CASE
         # メッシュを作らないとpolymeshがないので。
         os.system(CASE.name + '/Makemesh')
+
         # get n_cells
         self.sample = Sample(CASE)
         self.n_cells = self.sample.n_cells
@@ -1074,7 +1071,6 @@ class Aircond:
 
         os.system(self.CASE.name + '/Makemesh')
         
-        
         # 初期条件の設定
         T_the_first = ParsedParameterFile(self.CASE.initialDir() + '/T')
         
@@ -1213,7 +1209,6 @@ class Aircond:
                 self.reward = self.reward - 50
             
         return self.observation, self.reward, self.done, self.runOK
-
 
 # In[35]:
 
@@ -1487,12 +1482,12 @@ boundaryField
 # aircondを並列でたくさんつくるためのクラス
 
 # ケースの作成
-def makecase(NUM_PROCESSES,casename='Case',stride=100, end=3000,write_interval="nochange",pick_width=[0.2,0.2,0],temp_only=False):
+def makecase(NUM_PROCESSES,casename='Case',stride=10, end=3000,write_interval="nochange",pick_width=[0.2,0.2,0],temp_only=False):
     """並列でたくさんのケースをつくる
     xCells : x方向のセル数
     insert_list : 障害物があり、ゼロ埋めするセル
     """
-    os.system("./makecase {} {}".format(NUM_PROCESSES, casename))
+    os.system("makecase {} {}".format(NUM_PROCESSES, casename))
     if isinstance(end,int) or isinstance(end,float):
         end = [end for x in range(NUM_PROCESSES)]
     Envs = []
@@ -1504,8 +1499,10 @@ def makecase(NUM_PROCESSES,casename='Case',stride=100, end=3000,write_interval="
             aircond.change_write_interval(write_interval)
         Envs_append(aircond)
     return Envs
-
-
+#%%
+Envs = makecase(3)
+#%%
+aaa = Aircond(CASE)
 # In[37]:
 
 
@@ -1640,7 +1637,6 @@ sqb = 0.2
 
 
 # In[43]:
-
 
 # GPUの使用の設定
 use_cuda = torch.cuda.is_available()
@@ -1858,7 +1854,7 @@ class Brain(object):
 
 # In[19]:
 
-
+COMMENT='''
 WEIGHT_FILE = "./weight_save/weight_end.pth"
 
 
@@ -1884,7 +1880,7 @@ class Brain(object):
             actor_critic.parameters(), lr=lr, eps=eps, alpha=alpha)
 
     def update(self, rollouts):
-        '''advanced計算した5つのstepの全てを使って更新します'''
+        """advanced計算した5つのstepの全てを使って更新します"""
         obs_shape = rollouts.observations.size()[2:]  # torch.Size([4, 84, 84])
         num_steps = NUM_ADVANCED_STEP
         num_processes = NUM_PROCESSES
@@ -1918,7 +1914,7 @@ class Brain(object):
         nn.utils.clip_grad_norm_(self.actor_critic.parameters(), max_grad_norm)
         #  一気に結合パラメータが変化しすぎないように、勾配の大きさは最大0.5までにする
 
-        self.optimizer.step()  # 結合パラメータを更新
+        self.optimizer.step()  # 結合パラメータを更新'''
 
 
 # In[47]:

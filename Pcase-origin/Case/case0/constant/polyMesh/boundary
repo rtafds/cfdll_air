@@ -15,101 +15,77 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-12
+10
 (
     floor
     {
         type            wall;
         inGroups        1(wall);
-        nFaces          36;
-        startFace       850;
+        nFaces          29;
+        startFace       871;
     }
     ceiling
     {
         type            wall;
         inGroups        1(wall);
-        nFaces          43;
-        startFace       886;
+        nFaces          40;
+        startFace       900;
     }
     sWall
     {
         type            wall;
         inGroups        1(wall);
-        nFaces          1;
-        startFace       929;
+        nFaces          3;
+        startFace       940;
     }
     nWall
     {
         type            wall;
         inGroups        1(wall);
         nFaces          6;
-        startFace       930;
+        startFace       943;
     }
     sideWalls
     {
         type            empty;
         inGroups        1(empty);
-        nFaces          916;
-        startFace       936;
+        nFaces          926;
+        startFace       949;
     }
     glass1
     {
         type            wall;
         inGroups        1(wall);
         nFaces          9;
-        startFace       1852;
+        startFace       1875;
     }
     glass2
     {
         type            wall;
         inGroups        1(wall);
         nFaces          2;
-        startFace       1861;
+        startFace       1884;
     }
     sun
     {
         type            wall;
         inGroups        1(wall);
         nFaces          14;
-        startFace       1863;
-    }
-    Table_master
-    {
-        type            wall;
-        inGroups        
-2
-(
-wall
-Table
-)
-;
-        nFaces          9;
-        startFace       1877;
-    }
-    Table_slave
-    {
-        type            wall;
-        inGroups        
-2
-(
-wall
-Table
-)
-;
-        nFaces          9;
         startFace       1886;
     }
-    inlet
+    heatsource1
     {
-        type            patch;
-        nFaces          1;
-        startFace       1895;
+        type            wall;
+        inGroups        1(wall);
+        nFaces          3;
+        startFace       1900;
     }
-    outlet
+    heatsource2
     {
-        type            patch;
-        nFaces          2;
-        startFace       1896;
+        type            wall;
+        inGroups        1(wall);
+        nFaces          4;
+        startFace       1903;
     }
 )
 

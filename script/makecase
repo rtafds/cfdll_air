@@ -2,13 +2,14 @@
 # ケースファイルを多量に作成する
 # ファイルはoriginからコピーする。
 # $1:NUM_PROCESSES $2:casename
-cd `dirname $0`
-ORIG=origin
+# makecase 10 Case
+#cd `dirname $0`
+ORIG=originCase
 rm -rf ./$2
 mkdir ./$2
 
 RENGE=$(( $1-1 ))
 for i in `seq 0 $RENGE`
 do 
-    cp -r ./$ORIG ./$2/case$i
+    cp -r $REPOROOT/$ORIG ./$2/case$i
 done

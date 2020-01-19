@@ -1,8 +1,8 @@
 #!/bin/bash
-cd `dirname $0`
+#cd `dirname $0`
 ./Allclean
-rm -r 0
-cp -r 0org 0
+rm -r ./0
+cp -r ./0org ./0
 
 
 echo "blockMesh"
@@ -55,30 +55,31 @@ createPatch -dict system/createPatchDict3 -overwrite > log.CreatePatch
 
 
 # 境界条件にheatsource1を追加
+# setting $SCRIPT by direnv from .envrc file.
 echo "heatsource1_plus"
-python ./makeheatsource/heatsourceU.py ./0/U heatsource1
-python ./makeheatsource/heatsourceT.py ./0/T heatsource1
-python ./makeheatsource/heatsourcep.py ./0/p heatsource1
-python ./makeheatsource/heatsourcep_rgh.py ./0/p_rgh heatsource1
-python ./makeheatsource/heatsourcenut.py ./0/nut heatsource1
-python ./makeheatsource/heatsourcek.py ./0/k heatsource1
-python ./makeheatsource/heatsourceepsilon.py ./0/epsilon heatsource1
-python ./makeheatsource/heatsourcealphat.py ./0/alphat heatsource1
-python ./makeheatsource/heatsourceG.py ./0/G heatsource1
-python ./makeheatsource/heatsourceG.py ./0/IDefault heatsource1
+python $SCRIPT/makeheatsource/heatsourceU.py ./0/U heatsource1
+python $SCRIPT/makeheatsource/heatsourceT.py ./0/T heatsource1
+python $SCRIPT/makeheatsource/heatsourcep.py ./0/p heatsource1
+python $SCRIPT/makeheatsource/heatsourcep_rgh.py ./0/p_rgh heatsource1
+python $SCRIPT/makeheatsource/heatsourcenut.py ./0/nut heatsource1
+python $SCRIPT/makeheatsource/heatsourcek.py ./0/k heatsource1
+python $SCRIPT/makeheatsource/heatsourceepsilon.py ./0/epsilon heatsource1
+python $SCRIPT/makeheatsource/heatsourcealphat.py ./0/alphat heatsource1
+python $SCRIPT/makeheatsource/heatsourceG.py ./0/G heatsource1
+python $SCRIPT/makeheatsource/heatsourceG.py ./0/IDefault heatsource1
 
 # 境界条件にheatsource2を追加
 echo "heatsource2_plus"
-python ./makeheatsource/heatsourceU.py ./0/U heatsource2
-python ./makeheatsource/heatsourceT.py ./0/T heatsource2
-python ./makeheatsource/heatsourcep.py ./0/p heatsource2
-python ./makeheatsource/heatsourcep_rgh.py ./0/p_rgh heatsource2
-python ./makeheatsource/heatsourcenut.py ./0/nut heatsource2
-python ./makeheatsource/heatsourcek.py ./0/k heatsource2
-python ./makeheatsource/heatsourceepsilon.py ./0/epsilon heatsource2
-python ./makeheatsource/heatsourcealphat.py ./0/alphat heatsource2
-python ./makeheatsource/heatsourceG.py ./0/G heatsource2
-python ./makeheatsource/heatsourceG.py ./0/IDefault heatsource2
+python $SCRIPT/makeheatsource/heatsourceU.py ./0/U heatsource2
+python $SCRIPT/makeheatsource/heatsourceT.py ./0/T heatsource2
+python $SCRIPT/makeheatsource/heatsourcep.py ./0/p heatsource2
+python $SCRIPT/makeheatsource/heatsourcep_rgh.py ./0/p_rgh heatsource2
+python $SCRIPT/makeheatsource/heatsourcenut.py ./0/nut heatsource2
+python $SCRIPT/makeheatsource/heatsourcek.py ./0/k heatsource2
+python $SCRIPT/makeheatsource/heatsourceepsilon.py ./0/epsilon heatsource2
+python $SCRIPT/makeheatsource/heatsourcealphat.py ./0/alphat heatsource2
+python $SCRIPT/makeheatsource/heatsourceG.py ./0/G heatsource2
+python $SCRIPT/makeheatsource/heatsourceG.py ./0/IDefault heatsource2
 
 
 <<COMMENTOUT
@@ -129,28 +130,28 @@ createPatch -dict system/createPatchDict2 -overwrite > log.CreatePatch
 
 # 境界条件にinletを追加
 echo "inlet_plus"
-python ./makeinlet/inletU.py ./0/U
-python ./makeinlet/inletT.py ./0/T
-python ./makeinlet/inletp.py ./0/p
-python ./makeinlet/inletp_rgh.py ./0/p_rgh
-python ./makeinlet/inletnut.py ./0/nut
-python ./makeinlet/inletk.py ./0/k
-python ./makeinlet/inletepsilon.py ./0/epsilon
-python ./makeinlet/inletalphat.py ./0/alphat
-python ./makeinlet/inletG.py ./0/G
-python ./makeinlet/inletG.py ./0/IDefault
+python $SCRIPT/makeinlet/inletU.py ./0/U
+python $SCRIPT/makeinlet/inletT.py ./0/T
+python $SCRIPT/makeinlet/inletp.py ./0/p
+python $SCRIPT/makeinlet/inletp_rgh.py ./0/p_rgh
+python $SCRIPT/makeinlet/inletnut.py ./0/nut
+python $SCRIPT/makeinlet/inletk.py ./0/k
+python $SCRIPT/makeinlet/inletepsilon.py ./0/epsilon
+python $SCRIPT/makeinlet/inletalphat.py ./0/alphat
+python $SCRIPT/makeinlet/inletG.py ./0/G
+python $SCRIPT/makeinlet/inletG.py ./0/IDefault
 
 echo "outlet_plus"
-python ./makeoutlet/outletU.py ./0/U
-python ./makeoutlet/outletT.py ./0/T
-python ./makeoutlet/outletp.py ./0/p
-python ./makeoutlet/outletp_rgh.py ./0/p_rgh
-python ./makeoutlet/outletnut.py ./0/nut
-python ./makeoutlet/outletk.py ./0/k
-python ./makeoutlet/outletepsilon.py ./0/epsilon
-python ./makeoutlet/outletalphat.py ./0/alphat
-python ./makeoutlet/outletG.py ./0/G
-python ./makeoutlet/outletG.py ./0/IDefault
+python $SCRIPT/makeoutlet/outletU.py ./0/U
+python $SCRIPT/makeoutlet/outletT.py ./0/T
+python $SCRIPT/makeoutlet/outletp.py ./0/p
+python $SCRIPT/makeoutlet/outletp_rgh.py ./0/p_rgh
+python $SCRIPT/makeoutlet/outletnut.py ./0/nut
+python $SCRIPT/makeoutlet/outletk.py ./0/k
+python $SCRIPT/makeoutlet/outletepsilon.py ./0/epsilon
+python $SCRIPT/makeoutlet/outletalphat.py ./0/alphat
+python $SCRIPT/makeoutlet/outletG.py ./0/G
+python $SCRIPT/makeoutlet/outletG.py ./0/IDefault
 
 
 <<COMMENTOUT

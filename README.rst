@@ -20,6 +20,7 @@ Installation
 ------------
 environment
 ~~~~~~~~~~~~
+やっぱり入れるのやめた、いらない。
 | Install go and direnv.
 | Direnv can setting environment variable in sevaral directory.
 ```
