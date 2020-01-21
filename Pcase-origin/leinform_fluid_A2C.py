@@ -1499,10 +1499,7 @@ def makecase(NUM_PROCESSES,casename='Case',stride=10, end=3000,write_interval="n
             aircond.change_write_interval(write_interval)
         Envs_append(aircond)
     return Envs
-#%%
-Envs = makecase(3)
-#%%
-aaa = Aircond(CASE)
+
 # In[37]:
 
 
